@@ -22,7 +22,6 @@ class Backend{
                 date: input
             }
         }
-        console.log(input) 
         let response = await axios.get("https://cy7orrz93f.execute-api.us-west-2.amazonaws.com/beta/date", params)
         return(response['data']['Item'])
     }
@@ -36,7 +35,6 @@ class Backend{
             symptoms: input['symptoms'],
             weight: input['weight'],
         }
-        console.log(params)
         let response = await axios.post("https://cy7orrz93f.execute-api.us-west-2.amazonaws.com/beta/date", params)
         return(response)
     }
