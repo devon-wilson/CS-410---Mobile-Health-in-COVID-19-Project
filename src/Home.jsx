@@ -1,6 +1,6 @@
 import React from "react";
 import { Tabs, Tab, AppBar } from "@material-ui/core";
-import Calendar from "./components/Calendar"
+import ChemCalendar from "./components/Calendar"
 import Chart from "./components/Chart"
 import Analytics from "./components/Analytics";
 
@@ -21,7 +21,7 @@ const Home = props => {
           <Tab label="Analytics" />
         </Tabs>
       </AppBar>
-      {selectedTab === 0 && <Calendar />}
+      {selectedTab === 0 && <ChemCalendar />}
       {selectedTab === 1 && <Chart />}
       {selectedTab === 2 && <Analytics />}
     </>

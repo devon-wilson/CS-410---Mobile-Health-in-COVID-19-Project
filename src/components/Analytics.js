@@ -55,7 +55,7 @@ class Analytics extends React.Component{
         let chartData = {
             labels: this.returnMonths(),
             datasets: [{
-                label: "Monthly Progress in 2021",
+                label: "Net Gain/Loss Progress in 2021",
                 data: this.state.difference,
                 backgroundColor: ['rgba(241, 0, 0, 0.71)'],
             }] 
@@ -70,7 +70,7 @@ class Analytics extends React.Component{
     render(){
         return (
             <div>
-                <Doughnut
+                <Bar
                     data = {this.createChart()} 
                     options = {{
                         rotation: 270,
