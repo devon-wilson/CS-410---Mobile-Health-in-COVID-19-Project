@@ -75,7 +75,7 @@ class Chart extends React.Component{
                 <p></p> 
                 <center>
                 <button onClick={() => this.changeData(-1)}>
-                    Prev
+                    Back
                 </button>
                 <button onClick={() => this.changeData(1)}>
                     Next
@@ -86,7 +86,7 @@ class Chart extends React.Component{
                 </center> 
                 <Line
                     data={this.createChart()}
-                    width={316}
+                    width={324}
                     options={{
                         scales: {
                             y: {

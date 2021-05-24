@@ -69,9 +69,6 @@ class ChemCalendar extends Component {
 
     return (
       <div className="Calendar">
-        <header className="calendar-header">
-          <h1 className=".calendar-title">React Calendar</h1>
-        </header>
         <div style={{ height: 700 }}>
           <Calendar
             localizer={localizer}
