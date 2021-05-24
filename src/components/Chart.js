@@ -87,6 +87,13 @@ class Chart extends React.Component{
                 <Line
                     data={this.createChart()}
                     width={316}
+                    options={{
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }}
                 />
             </div>
         )
