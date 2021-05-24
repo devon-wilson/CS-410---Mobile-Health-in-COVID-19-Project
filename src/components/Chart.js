@@ -51,7 +51,7 @@ class Chart extends React.Component{
         let chartData = {
             labels: this.returnDates(),
             datasets: [{
-                label: "Weight Progression", 
+                label: "Weight in lbs", 
                 data: this.returnWeights(),
                 backgroundColor: ['rgba(255, 146, 0, 1)'],
                 borderColor: ['rgba(255, 146, 0, 1)']
@@ -72,18 +72,21 @@ class Chart extends React.Component{
         ]; 
         return(
            <div>
+                <p></p> 
+                <center>
                 <button onClick={() => this.changeData(-1)}>
                     Prev
                 </button>
                 <button onClick={() => this.changeData(1)}>
                     Next
                 </button>
+                </center> 
                 <center>
                 {monthNames[this.state.month-1]} Progress
                 </center> 
                 <Line
                     data={this.createChart()}
-                    width={310}
+                    width={316}
                 />
             </div>
         )

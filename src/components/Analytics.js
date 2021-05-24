@@ -1,7 +1,11 @@
 import React from 'react'
-import { Line , Pie } from 'react-chartjs-2'
+import { Bar } from 'react-chartjs-2'
 import axios from 'axios'
 import Backend from './Backend'
+
+//Weight loss since begining of this year (bar graph)
+//BMI analysis, COVID analysis
+//Average heartrate, COVID analysis
 
 class Analytics extends React.Component{
     constructor(props){
