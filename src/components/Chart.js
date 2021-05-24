@@ -7,7 +7,8 @@ class Chart extends React.Component{
     constructor(props){
         super(props)
         this.state = {
-            data: []
+            data: [],
+            month: 0
         }
     }
 
@@ -17,13 +18,16 @@ class Chart extends React.Component{
         let backend = new Backend()
         let response = await backend.getMonth(month)
         this.setState({data: response})
+        this.setState({month: month}) 
         return response
     }
 
     async changeData(input){
         let backend = new Backend()
-        let response = await backend.getMonth(input)
+        let updateMonth = this.state.month + input 
+        let response = await backend.getMonth(updateMonth)
         this.setState({data: response})
+        this.setState({month: updateMonth}) 
         return response
     }
     
@@ -45,15 +49,13 @@ class Chart extends React.Component{
 
     createChart(){
         let chartData = {
-            
             labels: this.returnDates(),
             datasets: [{
-                label: "Weight Progress", 
+                label: "Weight Progression", 
                 data: this.returnWeights(),
                 backgroundColor: ['rgba(0, 152, 255, 1)'],
                 borderColor: ['rgba(0, 152, 255, 1)']
             }]
-        
         }
         return chartData
     }
@@ -63,31 +65,21 @@ class Chart extends React.Component{
     }
     
     render(){
-        let data = this.createChart() 
-        console.log(data) 
+        const monthNames = [
+            "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"
+        ]; 
         return(
            <div>
-                Weight Progress
+                <button onClick={() => this.changeData(-1)}>
+                    Prev
+                </button>
+                <button onClick={() => this.changeData(1)}>
+                    Next
+                </button>
+                
+                {monthNames[this.state.month-1]} Progress
                 <Line
                     data={this.createChart()}
-                    options={{
-                        title:{
-                          display:true,
-                          text:"Weight Progress",
-                          fontSize:2
-                        },
-                        scales:{
-                            yAxes: [{
-                                ticks: {
-                                    beginAtZero: true
-                                }
-                            }]
-                        },
-                        legend:{
-                          display:false,
-                          position:'right'
-                        }
-                      }}
                 />
             </div>
         )
