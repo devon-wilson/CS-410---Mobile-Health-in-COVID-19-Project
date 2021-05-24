@@ -53,8 +53,8 @@ class Chart extends React.Component{
             datasets: [{
                 label: "Weight Progression", 
                 data: this.returnWeights(),
-                backgroundColor: ['rgba(0, 152, 255, 1)'],
-                borderColor: ['rgba(0, 152, 255, 1)']
+                backgroundColor: ['rgba(255, 146, 0, 1)'],
+                borderColor: ['rgba(255, 146, 0, 1)']
             }]
         }
         return chartData
@@ -64,6 +64,8 @@ class Chart extends React.Component{
         console.log(this.state)
     }
     
+    //<button style={{float:'right'}} onClick={() => this.changeData(1)}></button>
+    //<button style={{float:'left'}} onClick={() => this.changeData(-1)}>
     render(){
         const monthNames = [
             "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"
@@ -76,10 +78,12 @@ class Chart extends React.Component{
                 <button onClick={() => this.changeData(1)}>
                     Next
                 </button>
-                
+                <center>
                 {monthNames[this.state.month-1]} Progress
+                </center> 
                 <Line
                     data={this.createChart()}
+                    width={310}
                 />
             </div>
         )
