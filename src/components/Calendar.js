@@ -75,7 +75,7 @@ class ChemCalendar extends Component {
             events={cal_events}
             //step={960}
             defaultView="month"
-            views={["month", "week", "day"]}
+            views={["month", "week"]}
             defaultDate={new Date()}
             onSelectSlot={this.slotSelected}
             onSelectEvent={this.eventSelected}
