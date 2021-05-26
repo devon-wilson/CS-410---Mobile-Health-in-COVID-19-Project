@@ -17,7 +17,7 @@ class AddForm extends React.Component{
         let month_string = month.toString()
         if(month_string.length != 2) 
             month_string = "0" + month_string
-        const day = today.getUTCDate()
+        const day = today.getUTCDate() - 1
         let day_string =  day.toString()
         if(day_string.length != 2)
             day_string = "0" + day_string
