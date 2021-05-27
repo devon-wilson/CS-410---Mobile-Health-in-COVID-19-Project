@@ -4,10 +4,6 @@ import axios from 'axios'
 import Backend from './Backend'
 import GaugeChart from 'react-gauge-chart' 
 
-//Weight loss since begining of this year (bar graph)
-//BMI analysis, COVID analysis
-//Average heartrate, COVID analysis
-
 const monthNames = [
     "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"
 ]; 
