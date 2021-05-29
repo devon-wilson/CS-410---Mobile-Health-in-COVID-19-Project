@@ -19,7 +19,7 @@ class Analytics extends React.Component{
             current: {
                 feet: 5,
                 inches: 7,
-                c_weight: 0,
+                c_weight: "",
                 symptoms: "false",
                 exposure: ""
             },
