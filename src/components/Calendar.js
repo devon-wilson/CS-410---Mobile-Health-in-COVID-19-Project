@@ -5,6 +5,7 @@ import "react-big-calendar/lib/css/react-big-calendar.css";
 import axios from "axios";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import "./calendar.css";
+import { NavDropdown } from "react-bootstrap";
 
 moment.locale("en-GB");
 
@@ -13,73 +14,110 @@ const localizer = momentLocalizer(moment);
 class ChemCalendar extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
+      selectedMonth: new Date().getMonth(),
       cal_events: [
         //State is updated via componentDidMount
       ],
     };
   }
 
-  convertDate = (date) => {
-    return moment.utc(date).toDate();
-  };
-
-  async componentDidMount() {
-    const obj = [
-      {
-        start: new Date("2021-05-02"),
-        end: new Date("2021-05-02"),
-        name: "test product",
-        allDay: true,
-        title: "chemapp",
+  async getmonth() {
+    const { selectedMonth } = this.state;
+    const params = {
+      params: {
+        month: selectedMonth,
       },
+    };
+    let response = await axios.get(
+      "https://cy7orrz93f.execute-api.us-west-2.amazonaws.com/beta/month",
+      params
+    );
+    let data = JSON.parse(response.data["body"]);
+    let items = data["Items"];
+    let events = [items.length];
 
-      {
-        start: new Date("2021-05-02"),
-        end: new Date("2021-05-02"),
-        name: " product",
+    for (let i = 0; i < items.length; i++) {
+      let temp = {
+        date: items[i].date,
+        symptoms: items[i].symptoms,
+        weight: items[i].weight,
+        month: items[i].month,
+        exposure: items[i].exposure,
+        heartrate: items[i].heartrate,
+        start: items[i].date,
+        end: items[i].date,
+        title: "Weight: " + items[i].weight,
         allDay: true,
-        title: "diff",
-      },
-    ];
+        name: "test exposure",
+      };
+      events[i] = temp;
+    }
     this.setState({
-      cal_events: [...obj],
+      cal_events: [...events],
     });
   }
 
-  eventStyleGetter(event, start, end, isSelected) {
-    console.log(event);
-    var backgroundColor = "#" + event.hexColor;
-    var style = {
-      backgroundColor: backgroundColor,
-      borderRadius: "0px",
-      opacity: 0.8,
-      color: "black",
-      border: "0px",
-      display: "block",
-    };
-    return {
-      style: style,
-    };
+  setDate() {
+    const { selectedMonth } = this.state;
+    if (selectedMonth < 10) {
+      this.setState({ selectedMonth: selectedMonth }, () => this.getmonth());
+    } else {
+      this.setState({ selectedMonth: selectedMonth }, () => this.getmonth());
+    }
   }
 
-  render() {
-    const { cal_events } = this.state;
+  componentDidMount() {
+    this.setDate();
+  }
 
+  onChange = (date) => {
+    const { selectedMonth } = this.state;
+    if (date.getMonth() !== selectedMonth) {
+      this.setState({ selectedMonth: date.getMonth() + 1 }, () =>
+        this.setDate()
+      );
+    }
+  };
+
+  getBackground = (events) => {
+    console.log(events.symptoms);
+    if (events.exposure == "true") {
+      return "red";
+    } else if (events.symptoms == "true") {
+      return "yellow";
+    } else {
+      return "green";
+    }
+  };
+
+  render() {
+    const { cal_events, selectedMonth } = this.state;
     return (
       <div className="Calendar">
         <div style={{ height: 700 }}>
           <Calendar
+            onNavigate={this.onChange}
             localizer={localizer}
             events={cal_events}
-            //step={960}
             defaultView="month"
             views={["month", "week", "day"]}
             defaultDate={new Date()}
-            onSelectSlot={this.slotSelected}
-            onSelectEvent={this.eventSelected}
-            eventPropGetter={this.eventStyleGetter}
+            eventPropGetter={(events) => {
+              let newStyle = {
+                backgroundColor: "",
+                borderRadius: "0px",
+                opacity: 0.8,
+                color: "white",
+                border: "0px",
+                display: "block",
+              };
+              newStyle.backgroundColor = this.getBackground(events);
+              return {
+                className: "",
+                style: newStyle,
+              };
+            }}
           />
         </div>
       </div>
