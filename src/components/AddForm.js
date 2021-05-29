@@ -31,41 +31,52 @@ class AddForm extends React.Component{
     render(){
         return(
             <center>
-                <br></br> 
-                <br></br> 
+                <p></p> 
                 <Form>
+                <header><b>Add Form</b></header>
+                <p></p> 
                     <label>Date: </label> 
                     <input type="date" value={this.state.date}></input>
-                    <br></br> 
-                    <br></br> 
+                <p></p> 
                     <label>Weight: </label> 
                     <input type="number"></input>
-                    <br></br> 
-                    <br></br> 
+                <p></p> 
                     <label>Heartrate: </label> 
                     <input type="number"></input>
-                    <br></br> 
-                    <br></br> 
-                    <div>
+                <p></p> 
                     <label>Exposure: </label> 
                     <input type="radio" value="False" name="exposure" value="false"/> No
                     <input type="radio" value="True" name="exposure" value="true"/> Yes
-                    </div>
-                    <div>
-                    <br></br> 
+                <p></p> 
                     <label>Symptoms: </label> 
                     <input type="radio" value="False" name="symptoms" value="false"/> No
                     <input type="radio" value="True" name="symptoms" value="true"/> Yes
-                    </div>
-                    <br></br> 
-                    <br></br> 
+                <p></p> 
                     <Button variant="primary" type="submit">
-                        Submit
+                        Add 
                     </Button>
                 </Form>
-                <br></br> 
-                <br></br> 
+                
+                <p></p> 
+                <p></p> 
+                <p></p> 
+                <p></p> 
+                <p></p> 
+                <p></p> 
+        
+                <Form>
+                <header><b>Delete Form</b></header>
+                <p></p> 
+                    <label>Date: </label> 
+                    <input type="date" value={this.state.date}></input>
+                <p></p> 
+                    <Button variant="primary" type="submit">
+                        Delete 
+                    </Button>
+                </Form>
             </center>
+        
+        
         )
     }
 }

@@ -18,7 +18,7 @@ const Home = props => {
       <AppBar position="static" style={{backgroundColor: "#82b1ff", color: "primary"}}>
         <Tabs value={selectedTab} onChange={handleChange}>
           <Tab label="Calendar" />
-          <Tab label="Add Record" />
+          <Tab label="Add / Delete Record" />
           <Tab label="Progress" />
           <Tab label="Analytics" />
         </Tabs>
