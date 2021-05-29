@@ -49,7 +49,6 @@ class ChemCalendar extends Component {
   }
 
   eventStyleGetter(event, start, end, isSelected) {
-    console.log(event);
     var backgroundColor = "#" + event.hexColor;
     var style = {
       backgroundColor: backgroundColor,
@@ -75,7 +74,7 @@ class ChemCalendar extends Component {
             events={cal_events}
             //step={960}
             defaultView="month"
-            views={["month", "week"]}
+            views={["month", "week", "day"]}
             defaultDate={new Date()}
             onSelectSlot={this.slotSelected}
             onSelectEvent={this.eventSelected}
