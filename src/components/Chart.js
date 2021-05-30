@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { Bar, Line } from 'react-chartjs-2'
-import axios from 'axios'
 import Backend from './Backend'
 
 class Chart extends React.Component{
