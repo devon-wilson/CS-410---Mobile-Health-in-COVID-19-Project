@@ -10,7 +10,7 @@ In the era of COVID-19, a feature was also implemented to allow users to log whe
 ### Tabs
 
 #### Calendar
-<img width="1440" alt="Screen Shot 2021-05-30 at 10 23 14 AM" src="https://user-images.githubusercontent.com/36141897/120113827-20a25580-c131-11eb-99b5-6a8c5f80111f.png">
+<img width="1440" alt="Screen Shot 2021-05-30 at 10 40 38 AM" src="https://user-images.githubusercontent.com/36141897/120114316-7d067480-c133-11eb-9dac-e533003ecfa9.png">
 
 #### Add/Delete Form
 <img width="1440" alt="Screen Shot 2021-05-30 at 10 23 23 AM" src="https://user-images.githubusercontent.com/36141897/120113836-2f890800-c131-11eb-9fb1-0a699f39d239.png">
