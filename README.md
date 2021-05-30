@@ -10,16 +10,16 @@ In the era of COVID-19, a feature was also implemented to allow users to log whe
 ### Tabs
 
 #### Calendar
-<img width="1440" alt="Screen Shot 2021-05-29 at 4 44 15 PM" src="https://user-images.githubusercontent.com/36141897/120087470-277f8880-c09d-11eb-972b-320654a3019c.png">
+<img width="1440" alt="Screen Shot 2021-05-30 at 10 23 14 AM" src="https://user-images.githubusercontent.com/36141897/120113827-20a25580-c131-11eb-99b5-6a8c5f80111f.png">
 
 #### Add/Delete Form
-<img width="1440" alt="Screen Shot 2021-05-28 at 12 00 10 PM" src="https://user-images.githubusercontent.com/36141897/120031138-4141a280-bfad-11eb-8179-ddc84a0b049d.png">
+<img width="1440" alt="Screen Shot 2021-05-30 at 10 23 23 AM" src="https://user-images.githubusercontent.com/36141897/120113836-2f890800-c131-11eb-9fb1-0a699f39d239.png">
 
 #### Progress
 <img width="1440" alt="Screen Shot 2021-05-28 at 12 00 19 PM" src="https://user-images.githubusercontent.com/36141897/120032135-95995200-bfae-11eb-9b97-770de7a22089.png">
 
 #### Analytics
-<img width="1440" alt="Screen Shot 2021-05-28 at 12 00 31 PM" src="https://user-images.githubusercontent.com/36141897/120032160-a0ec7d80-bfae-11eb-996d-605dfffe04ab.png">
+<img width="1440" alt="Screen Shot 2021-05-30 at 10 23 34 AM" src="https://user-images.githubusercontent.com/36141897/120113842-37e14300-c131-11eb-95aa-c95546779240.png">
 
 ### Development
 
