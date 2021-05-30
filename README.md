@@ -1,70 +1,34 @@
-# Getting Started with Create React App
+# CS 410: Mobile Health in COVID-19 - Final Project 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Description
 
-## Available Scripts
+A simple health web application for weight watchers. Users can track their weight loss daily and see their progress with chart visuals.
+Users can also record their peak heartrate to determine a correlation between their weight and heartrate.
+An analytics tab is provided for users to see their current BMI and how much of a risk COVID might play at their current health.
+In the era of COVID-19, a feature was also implemented to allow users to log whether or not they are exhibiting COVID symptoms or have been exposed to COVID.
 
-In the project directory, you can run:
+### Tabs
 
-### `yarn start`
+#### Calendar
+<img width="1440" alt="Screen Shot 2021-05-29 at 4 44 15 PM" src="https://user-images.githubusercontent.com/36141897/120087470-277f8880-c09d-11eb-972b-320654a3019c.png">
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+#### Add/Delete Form
+<img width="1440" alt="Screen Shot 2021-05-28 at 12 00 10 PM" src="https://user-images.githubusercontent.com/36141897/120031138-4141a280-bfad-11eb-8179-ddc84a0b049d.png">
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+#### Progress
+<img width="1440" alt="Screen Shot 2021-05-28 at 12 00 19 PM" src="https://user-images.githubusercontent.com/36141897/120032135-95995200-bfae-11eb-9b97-770de7a22089.png">
 
-### `yarn test`
+#### Analytics
+<img width="1440" alt="Screen Shot 2021-05-28 at 12 00 31 PM" src="https://user-images.githubusercontent.com/36141897/120032160-a0ec7d80-bfae-11eb-996d-605dfffe04ab.png">
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Development
 
-### `yarn build`
+The frontend was designed using React Native. The calendar component used react-big-calendar, the chart components used chart.js, and the analytics component used react-gauge-chart.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The backend was developed using AWS. Data was stored and queried/indexed using DynamoDB and Lambda. The REST API was integrated with API Gateway.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### To run the application
+```
+npm start
+```
+*You may have to install some components*
