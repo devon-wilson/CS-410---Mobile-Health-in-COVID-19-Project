@@ -101,7 +101,8 @@ class Analytics extends React.Component{
             datasets: [{
                 label: "Net Gain/Loss Progress in 2021",
                 data: this.state.weight,
-                backgroundColor: ['rgba(241, 0, 0, 0.71)'],
+                backgroundColor: 
+                    ['#94C973','#FF8370','#FBC740', '#BD97CB', '#5BB0BA', '#ADB3BC']
             }] 
         }
         return chartData
@@ -156,7 +157,7 @@ class Analytics extends React.Component{
                     nrOfLevels={4}
                     cornerRadius={5}
                     arcsLength={[1, 2, 3, 6]}
-                    colors={['blue', '#5BE12C', '#F5CD19', '#EA4228']}
+                    colors={['#3581D8', '#28CC2D', '#FFE135', '#D82E3F']}
                     percent={this.state.bmi/100}
                     formatTextValue={value => value}
                     needleColor="grey"
