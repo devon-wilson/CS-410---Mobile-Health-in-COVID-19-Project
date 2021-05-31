@@ -133,11 +133,20 @@ class Analytics extends React.Component{
         let category = this.analyzeBMI()
         let message = "" 
         if(category == "healthy")
-            message = "At " + this.state.bmi + " you are " + category + " and at a low risk of dying from COVID."
+            message = "At " + this.state.bmi + " you are " + category + " and at a low risk of suffering from COVID."
         if(category == "underweight" || category == "overweight")
-            message = "At " + this.state.bmi + " you are " + category + " and at a higher risk of dying from COVID."
+        {
+            message = "At " + this.state.bmi + " you are " + category + " and at a higher risk of suffering from COVID."
+            if(category == "overweight")
+                message += " Let's continue to lower your BMI."
+            if(category == "underweight")
+                message += " Let's continue to raise your BMI."
+        }
         if(category == "obese")
-            message = "At " + this.state.bmi + " you are " + category + " and at a high risk of dying from COVID."
+        {
+            message = "At " + this.state.bmi + " you are " + category + " and at a high risk of suffering from COVID."
+            message += " Let's continue to lower your BMI."
+        }
 
         return (
             <div>

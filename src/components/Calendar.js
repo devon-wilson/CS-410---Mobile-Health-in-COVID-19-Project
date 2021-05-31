@@ -35,7 +35,8 @@ class ChemCalendar extends Component {
     );
     let data = JSON.parse(response.data["body"]);
     let items = data["Items"];
-    let events = [items.length];
+    let events = [];
+    
 
     for (let i = 0; i < items.length; i++) {
       let temp = {
@@ -51,7 +52,34 @@ class ChemCalendar extends Component {
         allDay: 'true',
         name: "test exposure",
       };
-      events[i] = temp;
+      //events[i] = temp;
+      events.push(temp)
+      if(items[i].exposure == 'true')
+      {
+        let temp2 = {
+          date: items[i].date, 
+          start: items[i].date,
+          end: items[i].date ,
+          exposure: items[i].exposure,
+          title: "COVID EXPOSURE",
+          allDay: 'true',
+          name: "exposure"
+        }
+        events.push(temp2)
+      }
+      else if(items[i].symptoms == 'true')
+      {
+        let temp2 = {
+          date: items[i].date, 
+          start: items[i].date,
+          end: items[i].date ,
+          symptoms: items[i].symptoms,
+          title: "SYMPTOMS",
+          allDay: 'true',
+          name: "symptoms"
+        }
+        events.push(temp2)
+      }
     }
     this.setState({
       cal_events: [...events],
