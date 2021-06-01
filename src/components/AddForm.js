@@ -1,84 +1,181 @@
-import React from 'react'
-import { Button, FormGroup, FormControl, ControlLabel, Form } from "react-bootstrap"
+import React from "react";
+import axios from "axios";
+import {
+  Button,
+  FormGroup,
+  FormControl,
+  ControlLabel,
+  Form,
+} from "react-bootstrap";
 
-class AddForm extends React.Component{
-    
-    constructor(props){
-        super(props)
+class AddForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.date = React.createRef("date");
+    this.weight = React.createRef("weight");
+    this.heartrate = React.createRef("heartrate");
+    this.exposure = React.createRef("exposure");
+    this.symptoms = React.createRef("symptoms");
+    this.weight = React.createRef("weight");
+    this.handleNewForm = this.handleNewForm.bind(this);
+    this.removeForm = this.removeForm.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
+    this.state = {
+      date: "",
+    };
+  }
 
-        this.state = {
-            date: ""
-        }
-    } 
-   
-    componentDidMount(){
-        const today = new Date()
-        const month = today.getUTCMonth() + 1; //months from 1-12
-        let month_string = month.toString()
-        if(month_string.length != 2) 
-            month_string = "0" + month_string
-        const day = today.getUTCDate() - 1
-        let day_string =  day.toString()
-        if(day_string.length != 2)
-            day_string = "0" + day_string
-        const year = today.getUTCFullYear()
-        
-        const utc = year + "-" + month_string + "-" + day_string
+  handleDelete(event) {
+    event.preventDefault();
+    let input = localStorage.getItem("date2");
+    this.removeForm(input);
+    console.log("were here " + localStorage.getItem("date2", event.target.value));
+  }
 
-        this.setState({date: utc})
-    }
+  async removeForm(input) {
+      console.log("input " + input);
+    const params = {
+      date: input,
+    };
+    let response = await axios.delete(
+      "https://cy7orrz93f.execute-api.us-west-2.amazonaws.com/beta/date",
+      params
+    );
+    console.log(response);
+    console.log("should be removed; " + input);
+  }
 
-    render(){
-        return(
-            <center>
-                <p></p> 
-                <Form>
-                <header><b>Add Form</b></header>
-                <p></p> 
-                    <label>Date: </label> 
-                    <input type="date" value={this.state.date}></input>
-                <p></p> 
-                    <label>Weight: </label> 
-                    <input type="number"></input>
-                <p></p> 
-                    <label>Heartrate: </label> 
-                    <input type="number"></input>
-                <p></p> 
-                    <label>Exposure: </label> 
-                    <input type="radio" value="False" name="exposure" value="false"/> No
-                    <input type="radio" value="True" name="exposure" value="true"/> Yes
-                <p></p> 
-                    <label>Symptoms: </label> 
-                    <input type="radio" value="False" name="symptoms" value="false"/> No
-                    <input type="radio" value="True" name="symptoms" value="true"/> Yes
-                <p></p> 
-                    <Button variant="primary" type="submit">
-                        Add 
-                    </Button>
-                </Form>
-                
-                <p></p> 
-                <p></p> 
-                <p></p> 
-                <p></p> 
-                <p></p> 
-                <p></p> 
-        
-                <Form>
-                <header><b>Delete Form</b></header>
-                <p></p> 
-                    <label>Date: </label> 
-                    <input type="date" value={this.state.date}></input>
-                <p></p> 
-                    <Button variant="primary" type="submit">
-                        Delete 
-                    </Button>
-                </Form>
-            </center>
-        
-        
-        )
-    }
+  handleExposure(event) {
+    localStorage.setItem("exposure", event.target.value);
+  }
+
+  handleSymptoms(event) {
+    localStorage.setItem("symptoms", event.target.value);
+  }
+
+  handleDateSet(event) {
+      localStorage.setItem(("date2"), event.target.value);
+      console.log("date2 " + event.target.value)
+  }
+
+  handleNewForm(event) {
+    event.preventDefault();
+
+    const inputs = event.target.getElementsByTagName("input");
+
+    localStorage.setItem("date", inputs.date.value);
+    localStorage.setItem("weight", inputs.weight.value);
+    localStorage.setItem("heartrate", inputs.heartrate.value);
+    //localStorage.setItem("exposure", inputs.exposure.value);  moved into seperate functions because, 
+    //localStorage.setItem("symptoms", inputs.symptoms.value);  they are radio buttons and need to be handled differently
+    // console.log(localStorage.getItem("date"));//--
+    // console.log(localStorage.getItem("weight"));//--//---
+    // console.log(localStorage.getItem("heartrate"));//--//---//-->> for testing
+    // console.log(localStorage.getItem("exposure"));//--//---
+    // console.log(localStorage.getItem("symptoms"));//--
+
+    var d = new Date(localStorage.getItem("date"));
+
+    let obj = {
+      date: localStorage.getItem("date"),
+      weight: localStorage.getItem("weight"),
+      heartrate: localStorage.getItem("heartrate"),
+      exposure: localStorage.getItem("exposure"),
+      symptoms: localStorage.getItem("symptoms"),
+      month: d.getMonth() + 1,
+    };
+    // console.log("month " + d.getMonth() + 1);//testing
+    this.put(obj);
+  }
+
+  async put(input) {
+    const params = {
+      date: input["date"],
+      exposure: input["exposure"],
+      heartrate: input["heartrate"],
+      month: input["month"],
+      symptoms: input["symptoms"],
+      weight: input["weight"],
+    };
+    let response = await axios.post(
+      "https://cy7orrz93f.execute-api.us-west-2.amazonaws.com/beta/date",
+      params
+    );
+    console.log(params);
+    console.log(response);
+  }
+
+  componentDidMount() {
+    const today = new Date();
+    const month = today.getUTCMonth() + 1; //months from 1-12
+    let month_string = month.toString();
+    if (month_string.length != 2) month_string = "0" + month_string;
+    const day = today.getUTCDate() - 1;
+    let day_string = day.toString();
+    if (day_string.length != 2) day_string = "0" + day_string;
+    const year = today.getUTCFullYear();
+    const utc = year + "-" + month_string + "-" + day_string;
+    this.setState({ date: utc });
+  }
+
+  render() {
+    return (
+      <center>
+        <p></p>
+        <Form onSubmit={this.handleNewForm} onsubmit="return false">
+          <header>
+            <b>Add Form</b>
+          </header>
+          <p></p>
+          <label>Date: </label>
+          <input type="date" name="date"></input>
+          <p></p>
+          <label>Weight: </label>
+          <input type="number" name="weight"></input>
+          <p></p>
+          <label>Heartrate: </label>
+          <input type="number" name="heartrate"></input>
+          <p></p>
+          <label>Exposure: </label>
+          <div onChange={this.handleExposure}>
+            <input type="radio" value="False" name="exposure" value="false" />
+            No
+            <input type="radio" value="True" name="exposure" value="true" /> Yes
+          </div>
+          <p></p>
+          <label>Symptoms: </label>
+          <div onChange={this.handleSymptoms}>
+            <input type="radio" value="False" name="symptoms" /> No
+            <input type="radio" value="True" name="symptoms" /> Yes
+          </div>
+          <p></p>
+          <Button type="simpleQuery">Query</Button>
+        </Form>
+
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+
+        <Form onSubmit={this.handleDelete} onsubmit="return false">
+          <header>
+            <b>Delete Form</b>
+          </header>
+          <p></p>
+          <label>Date: </label>
+          <div onChange={this.handleDateSet}>
+            <input type="date" name="date2"></input>
+          </div>
+          <p></p>
+          <Button variant="primary" type="submit">
+            Delete
+          </Button>
+        </Form>
+      </center>
+    );
+  }
 }
 
-export default AddForm
+export default AddForm;

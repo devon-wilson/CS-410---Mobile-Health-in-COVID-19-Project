@@ -107,11 +107,14 @@ class ChemCalendar extends Component {
 
   getBackground = (events) => {
     console.log(events.symptoms);
-    if (events.exposure == "true") {
+    console.log(events.exposure);
+    if (events.exposure === "True" || events.exposure === "true") {
       return "#D82E3F";
-    } else if (events.symptoms == "true") {
+    } else if (events.symptoms === "True" || events.exposure === "true") {
+      console.log("should see yellow");
       return "#FBC740";
     } else {
+      console.log("nothing worked");
       return "#3581D8";
     }
   };
