@@ -1,4 +1,4 @@
-# CS 410: Mobile Health in COVID-19 - Final Project 
+# Health Tracker Application 
 
 ### Description
 
