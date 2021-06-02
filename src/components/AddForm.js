@@ -37,10 +37,8 @@ class AddForm extends React.Component {
     const params = {
       date: input,
     };
-    let response = await axios.delete(
-      "https://cy7orrz93f.execute-api.us-west-2.amazonaws.com/beta/date",
-      params
-    );
+    const headers = {} 
+    let response = await axios.delete("https://cy7orrz93f.execute-api.us-west-2.amazonaws.com/beta/date", {params});
     console.log(response);
     console.log("should be removed; " + input);
   }
@@ -136,20 +134,19 @@ class AddForm extends React.Component {
           <label>Heartrate: </label>
           <input type="number" name="heartrate"></input>
           <p></p>
-          <label>Exposure: </label>
           <div onChange={this.handleExposure}>
-            <input type="radio" value="False" name="exposure" value="false" />
-            No
-            <input type="radio" value="True" name="exposure" value="true" /> Yes
+            <label>Exposure: </label>
+            <input type="radio" value="false" name="exposure" value="false" /> No
+            <input type="radio" value="true" name="exposure" value="true" /> Yes
           </div>
           <p></p>
-          <label>Symptoms: </label>
           <div onChange={this.handleSymptoms}>
-            <input type="radio" value="False" name="symptoms" /> No
-            <input type="radio" value="True" name="symptoms" /> Yes
+            <label>Symptoms: </label>
+            <input type="radio" value="false" name="symptoms" /> No
+            <input type="radio" value="true" name="symptoms" /> Yes
           </div>
           <p></p>
-          <Button type="simpleQuery">Query</Button>
+          <Button type="simpleQuery">Add</Button>
         </Form>
 
         <p></p>
